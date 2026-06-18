@@ -5,18 +5,18 @@ def number_pattern(n):
     Validates that the input is a positive integer before processing.
 
     Note on Optimization:
-    Initially, I stored integers in a list and used map() afterward.
-    I optimized this by converting integers to strings directly inside
-    the for-loop to save memory and eliminate the extra map step.
+    Initially, I accumulated items into a list. I optimized this by
+    building the string directly using concatenation inside the for-loop,
+    completely removing the need for intermediate list containers.
     """
-    output = []
     if not isinstance(n, int):
         return "Argument must be an integer value."
     if n < 1:
         return "Argument must be an integer greater than 0."
 
+    final_string = ""
     for i in range(1, n + 1):
-        output.append(str(i))
+        final_string += str(i) + " "
 
-    return " ".join(output)
-print(number_pattern(5))
+    return final_string.strip() #Removes the last space
+print(number_pattern(6))
