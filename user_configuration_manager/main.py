@@ -12,7 +12,7 @@ def add_setting(setting_dict, kv_tuple):
     else:
         setting_dict[k] = v
         return f"Setting '{k}' added with value '{v}' successfully!"
-        
+
 def update_setting(setting_dict, kv_tuple):
     k, v = kv_tuple
     k = k.lower()
@@ -35,3 +35,26 @@ def delete_setting(setting_dict, key):
             return f"Setting '{key}' deleted successfully!"
     else:
         return "Setting not found!"
+
+def view_settings(setting_dict):
+    if setting_dict == {}:
+        return f"No settings available."
+    else:
+        result = "Current User Settings:\n"
+
+        for i, j in setting_dict.items():
+            result += f"{i.capitalize()}: {j}\n"
+        return result
+
+
+print(test_settings)
+print(add_setting(test_settings, ("Language", "English")))
+print(add_setting(test_settings, ("THEME", "Dark")))
+print(add_setting(test_settings, ("volume", "medium")))
+print("\n")
+print(update_setting(test_settings, ("notifications", "off")))
+print(update_setting(test_settings, ("Theme", "light")))
+print("\n")
+print(delete_setting(test_settings, "volume"))
+print("\n")
+print(view_settings(test_settings))
